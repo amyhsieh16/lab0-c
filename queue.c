@@ -58,7 +58,7 @@ bool q_insert_head(queue_t *q, char *s)
         return false;
 
     /* allocate space for the string and copy it */
-    newh->value = malloc(strlen(s) + 1);
+    newh->value = malloc(sizeof(char) * (strlen(s) + 1));
     if (!newh->value) {
         free(newh);
         return false;
@@ -93,7 +93,8 @@ bool q_insert_tail(queue_t *q, char *s)
         return false;
 
     /* allocate space for the string and copy it */
-    newt->value = malloc(strlen(s) + 1);
+
+    newt->value = malloc(sizeof(char) * (strlen(s) + 1));
     if (!newt->value) {
         free(newt);
         return false;
@@ -230,7 +231,7 @@ list_ele_t *mergesort(list_ele_t *head)
     if (!head || !head->next)
         return head;
 
-    // Split oh half
+    // Split on half
     list_ele_t *fast, *slow;
     fast = head->next;
     slow = head;
